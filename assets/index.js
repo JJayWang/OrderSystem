@@ -53,7 +53,6 @@ window.onload = function () {
                         itemBtn.forEach(function (item) {
                             item.addEventListener('click', function (event) {
                                 event.preventDefault();
-                                checkPage.style.display = "block"
                                 item.classList.add("active");
                                 seletedData = menuDatas.find(function (meat) {
                                     return meat.id == item.id;
@@ -71,7 +70,7 @@ window.onload = function () {
     let cancelBtn = document.querySelector("#cancel-count");
     cancelBtn.addEventListener('click', function (event) {
         event.preventDefault();
-        checkPage.style.display = "none"
+        displayDetailPage(false);
         let itemBtn = document.querySelectorAll(".content-item");
         itemBtn.forEach(function (item) {
             item.classList.remove("active");
@@ -109,7 +108,7 @@ window.onload = function () {
 
         refreshPayList();
 
-        checkPage.style.display = "none"
+        displayDetailPage(false);
         let itemBtn = document.querySelectorAll(".content-item");
         itemBtn.forEach(function (item) {
             item.classList.remove("active");
@@ -123,9 +122,21 @@ window.onload = function () {
         detailHeader.innerHTML = data.name;
         const detailCount = document.getElementById("detail-count");
         detailCount.value = data.count;
+        displayDetailPage(true);
+    }
+
+    function displayDetailPage(display) {
+        if (checkPage) {
+            let attr = 'none';
+            if (display) {
+                attr = 'block';
+            }
+            checkPage.style.display = attr;
+        }
     }
 
     function refreshPayList() {
+        document.getElementById("pay-container").innerHTML = '';
         if (buyCart && buyCart.length > 0) {
             let html = ``;
             buyCart.forEach((item, index) => {
@@ -147,12 +158,35 @@ window.onload = function () {
             });
 
             document.getElementById("pay-container").innerHTML = html;
-
             let meatDelete = document.querySelectorAll(".delete-meat");
             if (meatDelete.length > 0) {
                 meatDelete.forEach((item) => {
-                    buyCart = buyCart.filter((deleteItem) => {
-                        return deleteItem.id !== item.getAttribute("data-id");
+                    item.addEventListener('click', () => {
+                        if(confirm("確定要刪除")){
+                            buyCart = buyCart.filter((deleteItem) => {
+                                return deleteItem.id !== item.getAttribute("data-id");
+                            });
+                            refreshPayList();
+                        }
+                        
+                    });
+                });
+            }
+
+            let meatUpdate = document.querySelectorAll(".update-count");
+            if (meatUpdate.length > 0) {
+                meatUpdate.forEach((item) => {
+                    item.addEventListener('click', () => {
+                        let updateItem = buyCart.find((payItem)=>{
+                            return payItem.id == item.getAttribute("data-id");
+                        });
+
+                        if(updateItem){
+                            seletedData = meatItems[updateItem.type].find(function (meat) {
+                                return meat.id == updateItem.id;
+                            });
+                        }
+                        setDetailInfo({ name: seletedData.name, count: updateItem.count });
                     });
                 });
             }

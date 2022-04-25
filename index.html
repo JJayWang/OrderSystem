@@ -25,7 +25,7 @@
         </header>
         <main>
             <div id="menu-container" class="content">
-                <div class="content-item">
+                <!-- <div class="content-item">
                     <img src="./assets/image/food/fd401525.jpg" alt="">
                     <div class="comment">義大利麵</div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="comment">
                         TTTTT
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="pay">
                 <div class="item-list">
@@ -76,8 +76,8 @@
                                 <th>修/刪</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="pay-container">
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>CCC</td>
                                 <td>AA</td>
@@ -336,13 +336,13 @@
                                     <a href="#">修</a> /
                                     <a href="#">刪</a>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
 
 
-                <a id="check-count" href="#" class="check">
+                <a id="check-bill" href="#" class="check">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     結帳
                 </a>
@@ -358,12 +358,12 @@
     </div>
     <div id="detail-wrap" class="detail-wrap">
         <div class="content">
-            <div class="header">
+            <div id="detail-name" class="header">
                 義大利麵
             </div>
             <div class="list">
                 <div class="display-number">
-                    <input type="number" class="count" value="0" max="99" min="1">
+                    <input id="detail-count" type="number" class="count" value="0" max="99" min="1">
                 </div>
                 <div class="count-button">
                     <a href="#">1</a>
@@ -380,7 +380,7 @@
                 </div>
             </div>
             <div class="action">
-                <a href="#" class="split">確定</a>
+                <a id="check-count" href="#" class="split">確定</a>
                 <a id="cancel-count" href="#">取消</a>
             </div>
         </div>

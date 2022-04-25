@@ -17,11 +17,7 @@ window.onload = function () {
         "sweets": [{}, {}, {}]
     };
 
-    let buyCart = [{
-        id: "F01",
-        count: 5,
-        type: "food"
-    }];
+    let buyCart = [];
 
     let menuType = '';
 

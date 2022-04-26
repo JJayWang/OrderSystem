@@ -169,6 +169,7 @@ window.onload = function () {
             }
         } else {
             alert("請至少點一項餐點");
+            
         }
     });
 

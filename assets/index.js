@@ -12,9 +12,83 @@ window.onload = function () {
             id: "F03",
             name: "頂級羊排",
             price: 330
+        },
+        {
+            id: "F04",
+            name: "頂級羊排",
+            price: 330
+        },
+        {
+            id: "F05",
+            name: "義大利麵",
+            price: 180
+        }, {
+            id: "F06",
+            name: "夏威夷披薩",
+            price: 220
+        }, {
+            id: "F07",
+            name: "頂級羊排",
+            price: 330
+        },
+        {
+            id: "F08",
+            name: "義大利麵",
+            price: 180
+        }, {
+            id: "F09",
+            name: "夏威夷披薩",
+            price: 220
         }],
-        "drink": [],
-        "sweets": []
+        "drink": [
+            {
+                id: "D01",
+                name: "頂級羊排",
+                price: 330
+            },
+            {
+                id: "D02",
+                name: "頂級羊排",
+                price: 330
+            },
+            {
+                id: "D03",
+                name: "頂級羊排",
+                price: 330
+            },
+            {
+                id: "D04",
+                name: "頂級羊排",
+                price: 330
+            },
+            {
+                id: "D05",
+                name: "頂級羊排",
+                price: 330
+            },
+            {
+                id: "D06",
+                name: "頂級羊排",
+                price: 330
+            }
+        ],
+        "sweets": [
+            {
+                id: "S01",
+                name: "頂級羊排",
+                price: 330
+            },
+            {
+                id: "S02",
+                name: "頂級羊排",
+                price: 330
+            },
+            {
+                id: "S03",
+                name: "頂級羊排",
+                price: 330
+            }
+        ]
     };
 
     let buyCart = [];

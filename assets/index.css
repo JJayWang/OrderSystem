@@ -236,11 +236,6 @@ footer {
     text-align: center;
 }
 
-/* .detail-wrap .list .count {
-    width: 100%;
-    border: none;
-} */
-
 .detail-wrap .action {
     text-align: center;
     padding-top: 10px;
@@ -289,4 +284,55 @@ footer {
 }
 .detail-wrap .list a:last-child {
     width: 286px;
+}
+
+.meat-list-wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.meat-list-wrap .meat-list {
+    width: 350px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+.meat-list-wrap .meat-list h2 {
+    text-align: center;
+}
+
+.meat-list-wrap .pos-list-header {
+    border-bottom: 2px dotted #ccc;
+    padding: 10px;
+    margin: 5px;
+}
+
+.meat-list-wrap .pos-list-table th:nth-child(1),
+.meat-list-wrap .pos-list-table td:nth-child(1) {
+    width: 55%;
+}
+
+.meat-list-wrap .order-time {
+    padding-top: 10px;
+    font-weight: 700;
+}
+
+.meat-list-wrap .pos-list-table {
+    min-height: 75px;
+    width: 100%;
+}
+
+.meat-list .total-count {
+    font-weight: 700;
+    padding: 10px;
+    border-top: 2px dotted #ccc;
+    margin: 5px;
 }

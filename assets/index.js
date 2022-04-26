@@ -27,7 +27,9 @@ window.onload = function () {
     let checkPage = document.querySelector(".detail-wrap");
     let seletedData = {};
 
+    const INITVAL = 0;
     const detailCount = document.getElementById("display-number");
+    detailCount.innerText = INITVAL;
 
     if (menuItems && menuItems.length > 0) {
         menuItems.forEach(function (item) {
@@ -57,7 +59,7 @@ window.onload = function () {
                                 seletedData = menuDatas.find(function (meat) {
                                     return meat.id == item.id;
                                 });
-                                setDetailInfo({ name: seletedData.name, count: 0 });
+                                setDetailInfo({ name: seletedData.name, count: INITVAL });
                             });
                         });
                     }
@@ -125,7 +127,7 @@ window.onload = function () {
     numBtn.forEach((item) => {
         item.addEventListener('click', function () {
             let inputNum = item.innerText;
-            if (detailCount.innerText == 0) {
+            if (detailCount.innerText == INITVAL) {
                 detailCount.innerText = inputNum;
             } else {
                 detailCount.innerText += inputNum;

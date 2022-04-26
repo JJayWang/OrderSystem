@@ -329,6 +329,7 @@ footer {
 .meat-list-wrap .pos-list-table {
     min-height: 75px;
     width: 100%;
+    text-align: center;
 }
 
 .meat-list .total-count {

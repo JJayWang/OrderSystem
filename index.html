@@ -81,11 +81,11 @@
             </div>
         </div>
     </div>
-    <div class="meat-list-wrap">
+    <div id="pos-list-order-wrap" class="meat-list-wrap">
         <div class="meat-list">
             <div class="pos-list-header">
                 <h2>JJay食堂</h2>
-                <div class="order-time">點單時間：2022/04/26 14:25:57</div>
+                <div class="order-time">點單時間：<span id="order-time-content">2022/04/26 14:25:57</span></div>
             </div>
             <table class="pos-list-table">
                 <thead>
@@ -95,12 +95,10 @@
                         <th>金額</th>
                     </tr>
                 </thead>
-                <tbody>
-                    
-                </tbody>
+                <tbody id="order-items-container"></tbody>
             </table>
             <div class="total-count">
-                總計：<span>0</span>
+                總計：<span id="display-pos-total">0</span>
             </div>
         </div>
     </div>

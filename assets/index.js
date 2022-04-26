@@ -136,10 +136,41 @@ window.onload = function () {
     });
 
     let countResetBtn = document.getElementById("count-reset");
-    countResetBtn.addEventListener('click',function() {
+    countResetBtn.addEventListener('click', function () {
         detailCount.innerText = 0;
     });
 
+
+    const checkedBillBtn = document.getElementById("check-bill");
+    checkedBillBtn.addEventListener('click', function () {
+        if (buyCart.length > 0) {
+            if (confirm("確認點餐完畢?")) {
+                const posOrderWrap = document.getElementById("pos-list-order-wrap");
+                posOrderWrap.style.display = "block";
+
+                let html = '';
+                let totalMoney = 0;
+                buyCart.forEach((buy) => {
+                    let buyRelated = getDataFromMenu(buy.type, buy.id);
+                    let buyTotal = buy.count * buyRelated.price;
+                    totalMoney += buyTotal;
+                    html += `
+                        <tr>
+                            <td>${buyRelated.name}</td>
+                            <td>${buy.count}</td>
+                            <td>${buyTotal}</td>
+                        </tr>
+                    `;
+                });
+
+                document.getElementById("order-items-container").innerHTML = html;
+                document.getElementById("display-pos-total").innerText = totalMoney;
+                document.getElementById("order-time-content").innerText = new Date().toISOString();
+            }
+        } else {
+            alert("請至少點一項餐點");
+        }
+    });
 
 
     function setDetailInfo(data) {
@@ -216,5 +247,11 @@ window.onload = function () {
                 });
             }
         }
+    }
+
+    function getDataFromMenu(type, id) {
+        return meatItems[type].find(item => {
+            return item.id === id;
+        })
     }
 }

@@ -27,6 +27,8 @@ window.onload = function () {
     let checkPage = document.querySelector(".detail-wrap");
     let seletedData = {};
 
+    const detailCount = document.getElementById("display-number");
+
     if (menuItems && menuItems.length > 0) {
         menuItems.forEach(function (item) {
             item.addEventListener('click', function () {
@@ -55,7 +57,7 @@ window.onload = function () {
                                 seletedData = menuDatas.find(function (meat) {
                                     return meat.id == item.id;
                                 });
-                                setDetailInfo({ name: seletedData.name, count: 1 });
+                                setDetailInfo({ name: seletedData.name, count: 0 });
                             });
                         });
                     }
@@ -80,7 +82,7 @@ window.onload = function () {
         event.preventDefault();
         const meatCount = document.getElementById("display-number").innerText;
         const parseVal = parseInt(meatCount, 10);
-        if (!isNaN(parseVal)) {
+        if (!isNaN(parseVal) && parseVal > 0) {
             let meatData = {
                 id: seletedData.id,
                 count: meatCount,
@@ -91,7 +93,7 @@ window.onload = function () {
                 let meatExist = buyCart.some(function (someItem) {
                     return someItem.id === meatData.id;
                 });
-    
+
                 if (meatExist) {
                     let existMeat = buyCart.find((item) => {
                         return item.id === meatData.id;
@@ -105,9 +107,9 @@ window.onload = function () {
             else {
                 buyCart.push(meatData);
             }
-    
+
             refreshPayList();
-    
+
             displayDetailPage(false);
             let itemBtn = document.querySelectorAll(".content-item");
             itemBtn.forEach(function (item) {
@@ -119,12 +121,29 @@ window.onload = function () {
         }
     });
 
+    let numBtn = document.querySelectorAll('.a-num');
+    numBtn.forEach((item) => {
+        item.addEventListener('click', function () {
+            let inputNum = item.innerText;
+            if (detailCount.innerText == 0) {
+                detailCount.innerText = inputNum;
+            } else {
+                detailCount.innerText += inputNum;
+            }
+        });
+    });
+
+    let countResetBtn = document.getElementById("count-reset");
+    countResetBtn.addEventListener('click',function() {
+        detailCount.innerText = 0;
+    });
+
 
 
     function setDetailInfo(data) {
         const detailHeader = document.getElementById("detail-name");
         detailHeader.innerHTML = data.name;
-        const detailCount = document.getElementById("display-number");
+
         detailCount.innerText = data.count;
         displayDetailPage(true);
     }

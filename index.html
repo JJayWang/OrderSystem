@@ -20,7 +20,7 @@
                 <a href="#" class="menu-item" data-type="sweets">甜點類</a>
             </div>
             <div class="function-time">
-                剩餘時間: <span>00:50</span>
+                剩餘時間: <span id="retain-time">0</span> 秒
             </div>
         </header>
         <main>
@@ -46,9 +46,9 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     結單
                 </a>
-                <a href="#" class="cancel">
+                <a id="cancel-bill" href="#" class="cancel">
                     <i class="fa fa-ban" aria-hidden="true"></i>
-                    取消
+                    清空
                 </a>
             </div>
         </main>
@@ -96,11 +96,20 @@
                     </tr>
                 </thead>
                 <tbody id="order-items-container"></tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">．．．</td>
+                    </tr>
+                </tfoot>
             </table>
             <div class="total-count">
                 總計：<span id="display-pos-total">0</span>
             </div>
         </div>
+    </div>
+
+    <div id="start-page-wrap" class="start-page-wrap">
+        <a id="start-pos" href="#">開始點餐</a>
     </div>
 </body>
 

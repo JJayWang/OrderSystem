@@ -165,14 +165,55 @@ window.onload = function () {
 
                 document.getElementById("order-items-container").innerHTML = html;
                 document.getElementById("display-pos-total").innerText = totalMoney;
-                document.getElementById("order-time-content").innerText = new Date().toISOString();
+                const now = new Date();
+                let timeForat = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDay()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+                document.getElementById("order-time-content").innerText = timeForat;
+                clearInterval(interDec);
             }
         } else {
             alert("請至少點一項餐點");
-            
+
         }
     });
 
+    const cancelBillBtn = document.getElementById("cancel-bill");
+    cancelBillBtn.addEventListener('click', function () {
+        if(confirm("確定要清空?")){
+            buyCart = [];
+            refreshPayList();
+        }
+        
+    });
+
+    let interDec;
+    const startBtn = document.getElementById("start-pos");
+    startBtn.addEventListener('click',function(){
+        displayStarPage(false);
+        let nowSec = 120;
+        const timeWrap = document.getElementById("retain-time");
+        timeWrap.innerText = nowSec;
+        interDec = setInterval(() => {
+            nowSec -= 1;
+            timeWrap.innerText = nowSec;
+            if (nowSec <= 0) {
+                clearInterval(interDec);
+                displayStarPage(true);
+                buyCart = [];
+                refreshPayList();
+            }
+        }, 1000);
+    });
+
+    
+    
+    function displayStarPage(display){
+        const startPage = document.getElementById("start-page-wrap");
+        let attr = 'none';
+        if(display){
+            attr = 'block';
+        }
+        startPage.style.display = attr;
+    }
 
     function setDetailInfo(data) {
         const detailHeader = document.getElementById("detail-name");

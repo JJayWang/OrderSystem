@@ -321,6 +321,9 @@ footer {
     width: 55%;
 }
 
+.meat-list-wrap .pos-list-table tfoot {
+    color: #888;
+}
 .meat-list-wrap .order-time {
     padding-top: 10px;
     font-weight: 700;
@@ -337,4 +340,29 @@ footer {
     padding: 10px;
     border-top: 2px dotted #ccc;
     margin: 5px;
+}
+
+.start-page-wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .8);
+    /* display: none; */
+}
+
+.start-page-wrap a {
+    display: inline-block;
+    background-color: aquamarine;
+    color: black;
+    padding: 5px 20px;
+    text-decoration: none;
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 8px;
+    font-weight: 500;
 }

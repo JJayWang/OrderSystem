@@ -13,8 +13,8 @@ window.onload = function () {
             name: "頂級羊排",
             price: 330
         }],
-        "drink": [{}, {}, {}],
-        "sweets": [{}, {}, {}]
+        "drink": [],
+        "sweets": []
     };
 
     let buyCart = [];

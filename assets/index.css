@@ -181,7 +181,6 @@ main .pay .check {
 
 main .pay .cancel {
     background-color: goldenrod;
-
 }
 
 
@@ -233,14 +232,14 @@ footer {
 
 .detail-wrap .display-number {
     border: 1px solid black;
-}
-
-.detail-wrap .list .count {
-    width: 100%;
     font-size: 30px;
-    border: none;
     text-align: center;
 }
+
+/* .detail-wrap .list .count {
+    width: 100%;
+    border: none;
+} */
 
 .detail-wrap .action {
     text-align: center;

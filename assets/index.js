@@ -30,6 +30,8 @@ window.onload = function () {
     if (menuItems && menuItems.length > 0) {
         menuItems.forEach(function (item) {
             item.addEventListener('click', function () {
+                const menuContainer = document.getElementById("menu-container");
+                menuContainer.innerHTML = '';
                 menuType = item.getAttribute("data-type");
                 let menuDatas = meatItems[menuType];
                 if (menuDatas && menuDatas.length > 0) {
@@ -42,7 +44,7 @@ window.onload = function () {
                             </div>
                         `;
                     });
-                    document.getElementById("menu-container").innerHTML = menuHtml;
+                    menuContainer.innerHTML = menuHtml;
 
                     let itemBtn = document.querySelectorAll(".content-item");
                     if (itemBtn.length > 0) {
@@ -76,39 +78,45 @@ window.onload = function () {
     let checkBtn = document.querySelector("#check-count");
     checkBtn.addEventListener('click', function (event) {
         event.preventDefault();
-        let meatCount = document.getElementById("detail-count").value * 1;
-        let meatData = {
-            id: seletedData.id,
-            count: meatCount,
-            type: menuType
-        };
+        const meatCount = document.getElementById("display-number").innerText;
+        const parseVal = parseInt(meatCount, 10);
+        if (!isNaN(parseVal)) {
+            let meatData = {
+                id: seletedData.id,
+                count: meatCount,
+                type: menuType
+            }
 
-        if (buyCart.length > 0) {
-            let meatExist = buyCart.some(function (someItem) {
-                return someItem.id === meatData.id;
-            });
-
-            if (meatExist) {
-                let existMeat = buyCart.find((item) => {
-                    return item.id === meatData.id;
+            if (buyCart.length > 0) {
+                let meatExist = buyCart.some(function (someItem) {
+                    return someItem.id === meatData.id;
                 });
-                existMeat.count = meatCount;
+    
+                if (meatExist) {
+                    let existMeat = buyCart.find((item) => {
+                        return item.id === meatData.id;
+                    });
+                    existMeat.count = meatCount;
+                }
+                else {
+                    buyCart.push(meatData);
+                }
             }
             else {
                 buyCart.push(meatData);
             }
-        }
-        else {
-            buyCart.push(meatData);
-        }
+    
+            refreshPayList();
+    
+            displayDetailPage(false);
+            let itemBtn = document.querySelectorAll(".content-item");
+            itemBtn.forEach(function (item) {
+                item.classList.remove("active");
+            });
 
-        refreshPayList();
-
-        displayDetailPage(false);
-        let itemBtn = document.querySelectorAll(".content-item");
-        itemBtn.forEach(function (item) {
-            item.classList.remove("active");
-        });
+        } else {
+            alert('請輸入正確的數值')
+        }
     });
 
 
@@ -116,8 +124,8 @@ window.onload = function () {
     function setDetailInfo(data) {
         const detailHeader = document.getElementById("detail-name");
         detailHeader.innerHTML = data.name;
-        const detailCount = document.getElementById("detail-count");
-        detailCount.value = data.count;
+        const detailCount = document.getElementById("display-number");
+        detailCount.innerText = data.count;
         displayDetailPage(true);
     }
 
@@ -158,13 +166,13 @@ window.onload = function () {
             if (meatDelete.length > 0) {
                 meatDelete.forEach((item) => {
                     item.addEventListener('click', () => {
-                        if(confirm("確定要刪除")){
+                        if (confirm("確定要刪除")) {
                             buyCart = buyCart.filter((deleteItem) => {
                                 return deleteItem.id !== item.getAttribute("data-id");
                             });
                             refreshPayList();
                         }
-                        
+
                     });
                 });
             }
@@ -173,11 +181,11 @@ window.onload = function () {
             if (meatUpdate.length > 0) {
                 meatUpdate.forEach((item) => {
                     item.addEventListener('click', () => {
-                        let updateItem = buyCart.find((payItem)=>{
+                        let updateItem = buyCart.find((payItem) => {
                             return payItem.id == item.getAttribute("data-id");
                         });
 
-                        if(updateItem){
+                        if (updateItem) {
                             seletedData = meatItems[updateItem.type].find(function (meat) {
                                 return meat.id == updateItem.id;
                             });

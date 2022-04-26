@@ -74,18 +74,18 @@ let meatItems = {
     "sweets": [
         {
             id: "S01",
-            name: "頂級羊排",
-            price: 330
+            name: "舒芙蕾",
+            price: 100
         },
         {
             id: "S02",
-            name: "頂級羊排",
-            price: 330
+            name: "巧克力鬆餅",
+            price: 80
         },
         {
             id: "S03",
-            name: "頂級羊排",
-            price: 330
+            name: "爆米花",
+            price: 50
         }
     ]
 };

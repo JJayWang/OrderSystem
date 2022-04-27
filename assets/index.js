@@ -26,10 +26,10 @@ window.onload = function () {
                     let menuHtml = '';
                     menuDatas.forEach(function (menu) {
                         menuHtml += `
-                            <div id="${menu.id}" class="content-item">
+                            <a href="#" id="${menu.id}" class="content-item">
                                 <img src="./assets/image/${menuType}/${menu.id}.jpg" alt="">
                                 <div class="comment">${menu.name} (${menu.price}元) </div>
-                            </div>
+                            </a>
                         `;
                     });
                     menuContainer.innerHTML = menuHtml;

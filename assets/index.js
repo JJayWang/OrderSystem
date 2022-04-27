@@ -184,6 +184,7 @@ window.onload = function () {
                 displayStarPage(true);
                 buyCart = [];
                 refreshPayList();
+                cancelBtn.click();
             }
         }, 1000);
     });

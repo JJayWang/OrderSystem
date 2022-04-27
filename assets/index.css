@@ -213,7 +213,7 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 10px;
+    padding: 10px 10px 0 10px;
 }
 
 .detail-wrap .header {
@@ -238,16 +238,22 @@ footer {
 
 .detail-wrap .action {
     text-align: center;
-    padding-top: 10px;
+    display: flex;
 }
 
 .detail-wrap .action a {
     display: inline-block;
     text-decoration: none;
-    width: 45%;
     font-size: 20px;
     color: darkblue;
     font-weight: 700;
+    padding: 10px 0;
+    flex: 1;
+}
+
+.detail-wrap .action a:hover {
+    background-color: darkblue;
+    color: #fff;
 }
 
 .detail-wrap .action .split {

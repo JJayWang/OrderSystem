@@ -335,11 +335,22 @@ footer {
     text-align: center;
 }
 
-.meat-list .total-count {
+.meat-list .total-count-wrap {
     font-weight: 700;
     padding: 10px;
     border-top: 2px dotted #ccc;
     margin: 5px;
+    display: flex;
+}
+
+.total-count-wrap .total-count {
+    flex: 1;
+}
+
+.total-count-wrap .order-restart {
+    /* margin: auto; */
+    /* justify-self: end; */
+    width: 20px;
 }
 
 .start-page-wrap {
@@ -349,7 +360,6 @@ footer {
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, .8);
-    /* display: none; */
 }
 
 .start-page-wrap a {

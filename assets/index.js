@@ -1,5 +1,5 @@
 window.onload = function () {
-    
+
 
     let buyCart = [];
 
@@ -162,16 +162,16 @@ window.onload = function () {
 
     const cancelBillBtn = document.getElementById("cancel-bill");
     cancelBillBtn.addEventListener('click', function () {
-        if(confirm("確定要清空?")){
+        if (confirm("確定要清空?")) {
             buyCart = [];
             refreshPayList();
         }
-        
+
     });
 
     let interDec;
     const startBtn = document.getElementById("start-pos");
-    startBtn.addEventListener('click',function(){
+    startBtn.addEventListener('click', function () {
         displayStarPage(false);
         let nowSec = 120;
         const timeWrap = document.getElementById("retain-time");
@@ -188,12 +188,21 @@ window.onload = function () {
         }, 1000);
     });
 
-    
-    
-    function displayStarPage(display){
+    const restartBtn = document.getElementById("restart-order");
+    restartBtn.addEventListener('click', () => {
+        if(confirm("確定開始新一筆訂單?")) {startBtn.click();
+            const posOrderWrap = document.getElementById("pos-list-order-wrap");
+            posOrderWrap.style.display = "none";
+            buyCart = [];
+            refreshPayList();
+        }
+    });
+
+
+    function displayStarPage(display) {
         const startPage = document.getElementById("start-page-wrap");
         let attr = 'none';
-        if(display){
+        if (display) {
             attr = 'block';
         }
         startPage.style.display = attr;
